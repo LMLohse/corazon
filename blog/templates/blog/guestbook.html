@@ -1,0 +1,31 @@
+{% extends 'blog/shell.html' %}
+{% block page %}
+
+    <h3>Guestbook</h3>
+
+    {% if comments %}
+        {% for comment in comments %}
+        <table>
+            <tr>
+                <td>{{ comment.name }}</td>
+                <td>{{ comment.submitted }}</td>
+            </tr>
+        </table>
+        <div>{{ comment.comment }}</div>
+        <hr>
+        {% endfor %}
+    {% else %}
+        <p>I wonder who will be the first one to write something down here.</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>Name:</p>
+        <input type="text" name="name" style="font-family: monospace; width: 400px">
+        <p>Comment:</p>
+        <textarea name="comment" style="font-family: monospace; width: 400px; height: 120px"></textarea>
+        <div><input type="submit"></div>
+    </form>
+
+{% endblock %}
+

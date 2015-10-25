@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="LMLohse" content="LMLohse" />
+    <title>lmlohse</title>
+
+</head>
+<body>
+
+<div id="page-shell">
+    <div id="nav-shell">
+        <div id="nav-bar">
+            <a href="{% url 'blog:projects' %}">projects</a> -
+            <a href="{% url 'blog:blog' %}">blog</a> -
+            <a href="{% url 'blog:me' %}">me</a>
+        </div>
+        <div id="nav-header">
+            <h2><a href="#">lmlohse</a></h2>
+        </div>
+    </div> {# nav-shell#}
+
+    <div id="content-shell">
+        <div id="sidebar-a">
+            <a href="/development">Development steps and progress of this blog</a>
+        </div>
+
+        <div id="content">
+            <h2>How about that</h2>
+            <p><strong>What content you ask?</strong> It's about writing my book about how to study anything. This one contains the chapter about procrastiantion, about different types of exams
+            like the powerpoint slide exam etc. and how to exploit by different types of lecturerers etc. And also a note about taking responsibilty of myself. How to study in the library (extroverts should never take
+            extroverts with them. The author of this book should not be me, but an urban legend.</p>
+            <h4>Design</h4>
+            <table>
+                <tr>
+                    <td>To do</td>
+                    <td>Done</td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>table and list design</li>
+                            <li>(optional) book mark mini picture</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>playing around with html</li>
+                            <li>shell</li>
+                            <li>link style, hover and highlighted texts</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div> {# end content shell#}
+
+    <div id="footer">
+        <div id="footer_sidebar">
+            <p><a href="{% url 'blog:archive' %}">archive</a></p>
+            <p><a href="{% url 'blog:guestbook' %}">guestbook</a></p>
+        </div>
+
+	    <div id="footer_content">
+            <p>You're doing fine. Have a nice day.</p>
+	    </div>
+    </div>
+</div>
+
+</body>
+</html>
+<!-- Now what? -->

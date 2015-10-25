@@ -1,0 +1,264 @@
+html, body {
+    /* clear the default magin and padding of the browser (no invisible 8px borders) */
+    margin: 0;
+    padding: 0;
+}
+
+@font-face{
+   font-family:Americana;
+   src: url(../blog/fonts/Air%20Americana.ttf)
+ }
+@font-face{
+   font-family:Timeless;
+   src: url(../blog/fonts/Timeless.ttf)
+ }
+@font-face{
+   font-family:TimelessBold;
+   src: url(../blog/fonts/Timeless-Bold.ttf)
+ }
+@font-face{
+   font-family:Drakolomb;
+   src: url(../blog/fonts/Drakolomb.otf)
+ }
+/*Thanks to http://www.dafont.com/*/
+
+body {
+    font-family: Drakolomb, sans-serif;
+    /*"Bembo"*/
+    /*font-family: verdana, sans-serif;*/
+    font-size: 16px;
+    color: #333333;
+    background: linear-gradient(to right, #FCFDFF, #EFF3FF);
+    line-height: 1;
+    /* Groundtone #ADC2FF*/
+    /*background: linear-gradient(to right, #F0F9FC, #B2E0F0); *//* Standard syntax #DAF3FF */
+    overflow-y: scroll
+}
+
+.hidden {
+    display: none;
+}
+
+/*h1, h2, h3{*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
+
+h4 {
+    padding: 5px;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    transition:  background 0s 0.15s;
+}
+
+/* unvisited link */
+a:link {
+    color: cadetblue;
+}
+
+/* visited link */
+a:visited {
+    color: cadetblue;
+}
+
+/* mouse over link */
+a:hover{
+    background: #D8F0F8;
+}
+
+/* selected link */
+a:active {
+    color: black;
+}
+
+ul {
+    list-style-type: square;
+    margin: 0 10px 0 10px;
+    padding: 5px;
+}
+
+table {
+    margin: 0;
+    padding: 5px;
+}
+
+#page-shell {
+    width: 800px;
+    margin: auto;                           /* the width of the id will be centered on the page*/
+}
+
+#nav-shell {
+    height: 70px;
+}
+
+#nav-header {
+    margin-right: 220px;
+}
+
+#nav-header h2{
+    font-family: Americana;
+    margin: 0;
+    padding: 20px;
+}
+
+#nav-header a{
+    transition: background 2s;
+}
+
+#nav-bar {
+    float: right;
+    width: 220px;
+    padding: 20px;
+}
+/*#main-nav ul {*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
+/*#main-nav li{*/
+    /*float: left;*/
+/*}*/
+/*#main-nav li a{*/
+    /*display: block;*/
+    /*height: 0;*/
+    /*padding: 50px 0 0 0;*/
+    /*overflow: hidden;*/
+    /*background-repeat: no-repeat;*/
+/*}*/
+
+#content-shell {
+    clear: both;
+}
+
+#sidebar-a {
+    float: right;
+    width: 220px;
+    padding: 20px;
+    line-height: 25px;
+}
+
+#content {
+    margin-right: 220px;
+    padding: 20px;
+    line-height: 25px;
+}
+
+#content h2{                                  /* only to h2 inside content (means this is children of content)*/
+    margin: 0;
+    padding: 0 0 15px 0;
+}
+
+#content p{
+    margin: 0;
+    padding: 0 0 5px 0;
+}
+
+#footer {
+    clear: both;
+    height: 66px;
+}
+
+#footer_content {
+    margin-right: 220px;
+    padding: 20px;
+    line-height: 15px;
+}
+
+#footer_sidebar {
+    float: right;
+    width: 220px;
+    padding: 20px;
+    line-height: 15px;
+}
+
+/*----------------Blogposts---------------------*/
+.blog{
+    font-size: 15px;
+}
+
+.blogheader{
+    color: black;
+    font-size: 25px;
+}
+
+.blogsubmit{
+    font-size: 13px;
+    color: #888888;
+}
+
+.blogheader a{
+    transition:  none;
+    color: black;
+}
+
+/* mouse over link */
+.blogheader a:hover{
+    background: #D8F0F8;
+}
+
+/* selected link */
+.blogheader a:active {
+    color: cadetblue;
+}
+
+
+/*----------------Dev Page---------------------*/
+#development {
+    background: honeydew;
+    margin: 20px 150px 40px 150px;
+    padding: 2px;
+}
+
+.envision{
+    margin: 0;
+    padding: 0;
+}
+
+.milestone{
+    margin-left: 10px; margin-right: 150px;
+    margin-bottom:20px;
+}
+
+.milestone table{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.milestone td{
+   border: 1px solid lightgrey;
+    width: 10%;
+}
+
+.progress{
+    height:28px;
+    margin-left: 10px; margin-right: 150px;
+    overflow:hidden;
+    background-color: whitesmoke;
+    /*border-radius:3px;*/
+    box-shadow:inset 0 1px 2px rgba(0,0,0,.1)
+}
+
+.progressbar{
+    float:left;
+    width:0;
+    height:100%;
+    font-size:14px;
+    line-height:28px;
+    color:#fff;
+    text-align:center;
+    background-color: steelblue;
+    box-shadow:inset 0 -1px 0 rgba(0,0,0,.14);
+}
+
+.succeed {
+    color: forestgreen;
+    font-weight: bold;
+}
+
+.kindaok {
+    color: forestgreen;
+}
+
+/*Tests*/

@@ -1,0 +1,21 @@
+{% extends 'blog/shell.html' %}
+{% block page %}
+
+    <div class="blog">
+        {% if object %}    {# blog_post when not a generic view#}
+            <div class="blogheader">
+                <p>{{ object.title }}</p>
+{#            {{ blog_post.slug }}#}
+            </div>
+            <div class="blogsubmit">
+                <p>{{ object.submitted }}</p>
+            </div>
+            <div>{{ object.entry|safe }}</div>
+            <hr>
+            <a style="font-size: 18px" href="/archive">see all the posts</a>
+        {% else %}
+            <p>Still no blog posts here :sadface</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="LMLohse" content="LMLohse" />
+    <title>lmlohse</title>
+</head>
+<body>
+
+<div id="page-shell">
+    <div id="nav-shell">
+        <div id="nav-bar">
+            <a href="{% url 'blog:projects' %}">projects</a> -
+            <a href="{% url 'blog:blog' %}">blog</a> -
+            <a href="{% url 'blog:me' %}">me</a>
+        </div>
+        <div id="nav-header">
+            <h2><a href="/">lmlohse</a></h2>
+        </div>
+    </div> {# nav-shell#}
+
+    <div id="content-shell">
+        <div id="sidebar-a">
+            <a href="/development">Development steps and progress of this blog</a>
+        </div>
+
+        <div id="content">
+            {% block page %}
+            {% endblock %}
+        </div>
+    </div> {# end content shell#}
+
+    <div id="footer">
+        <div id="footer_sidebar">
+            <p><a href="{% url 'blog:archive' %}">archive</a></p>
+            <p><a href="{% url 'blog:guestbook' %}">guestbook</a></p>
+        </div>
+
+	    <div id="footer_content">
+            <p>You're doing fine. Have a nice day.</p>
+	    </div>
+    </div>
+</div>
+
+</body>
+</html>

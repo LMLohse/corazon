@@ -1,0 +1,23 @@
+{% extends 'blog/shell.html' %}
+{% block page %}
+
+    <div class="blog">
+        {% if recent_blog_posts %}
+            {% for post in recent_blog_posts %}
+                <div class="blogheader">
+                    <a href="{{ post.slug }}">{{ post.title }}</a>
+                </div>
+                <div class="blogsubmit">
+                    <p>{{ post.submitted }}</p>
+                </div>
+
+                <div>{{ post.entry|safe }}</div>
+                <hr>
+            {% endfor %}
+            <a style="font-size: 18px" href="{% url 'blog:archive' %}">see all the posts</a>
+        {% else %}
+            <p>Still no blog posts here :sadface</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
