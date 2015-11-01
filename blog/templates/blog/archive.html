@@ -1,6 +1,22 @@
 {% extends 'blog/shell.html' %}
 {% block page %}
 
-tbd
+    {% if latestposts %}
+        {% for date in date_list %}
+            <p>{{ date.year }}</p>
+            <table>
+                {% for post in latestposts %}
+                    {% if post.submitted.year == date.year %}
+                        <tr>
+                            <td style="width: 50px">{{ post.submitted.month }}/{{ post.submitted.day }}</td>
+                            <td><a href="{% url 'blog:slug'  post.slug%}">{{ post.title }}</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        {% endfor %}
+    {% else %}
+        <p>nothing to see</p>
+    {% endif %}
 
 {% endblock %}

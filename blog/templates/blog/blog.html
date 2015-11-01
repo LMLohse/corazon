@@ -8,7 +8,7 @@
                     <a href="{{ post.slug }}">{{ post.title }}</a>
                 </div>
                 <div class="blogsubmit">
-                    <p>{{ post.submitted }}</p>
+                    <p>by {{ post.author }}, {{ post.submitted }}</p>
                 </div>
 
                 <div>{{ post.entry|safe }}</div>

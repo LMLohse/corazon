@@ -43,19 +43,17 @@ def development(request):
 class SlugView(generic.DetailView):
     template_name = 'blog/slug.html'
     model = Blog
-
-#### the same without generic view
-# def slugview(request, slug):
-#     blog_post = get_object_or_404(Blog, slug=slug)
-#     return render(request, 'blog/slug.html', {'blog_post': blog_post})
+    #### the same without generic view
+    # def slugview(request, slug):
+    #     blog_post = get_object_or_404(Blog, slug=slug)
+    #     return render(request, 'blog/slug.html', {'blog_post': blog_post})
 
 
 class MeView(generic.TemplateView):
     template_name = 'blog/me.html'
-
-# this is equal to:
-# def me(request):
-#     return render(request, 'blog/me.html')
+    # this is equal to:
+    # def me(request):
+    #     return render(request, 'blog/me.html')
 
 
 class GuestbookView(generic.View):
@@ -79,8 +77,13 @@ class GuestbookView(generic.View):
             return HttpResponseRedirect(reverse('blog:guestbook'))
 
 
-def archive(request):
-    return render(request, 'blog/archive.html')
+class Archive(generic.ArchiveIndexView):
+    queryset = Blog.objects.all()
+    context_object_name = 'latestposts'
+    date_field = "submitted"
+    allow_future = True
+    template_name = "blog/archive.html"
+
 
 
 ### guestboll as definition

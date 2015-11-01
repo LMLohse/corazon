@@ -8,11 +8,11 @@
 {#            {{ blog_post.slug }}#}
             </div>
             <div class="blogsubmit">
-                <p>{{ object.submitted }}</p>
+                <p>by {{ object.author }}, {{ object.submitted }}</p>
             </div>
             <div>{{ object.entry|safe }}</div>
             <hr>
-            <a style="font-size: 18px" href="/archive">see all the posts</a>
+            <a style="font-size: 18px" href="{% url 'blog:archive' %}">see all the posts</a>
         {% else %}
             <p>Still no blog posts here :sadface</p>
         {% endif %}

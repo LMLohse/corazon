@@ -5,7 +5,7 @@ from .models import Blog, GuestbookComment
 
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'submitted', 'modified')
+    list_display = ('title', 'author', 'slug', 'submitted', 'modified')
     list_filter = ('submitted', 'modified', 'slug')
     search_fields = ('title', 'entry')
 admin.site.register(Blog, BlogAdmin)
