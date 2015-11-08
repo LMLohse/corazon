@@ -18,12 +18,13 @@
         <p>I wonder who will be the first one to write something down here.</p>
     {% endif %}
 
+    <p class="error">{{ error }}</p>
     <form method="post">
         {% csrf_token %}
         <p>Name:</p>
-        <input type="text" name="name" style="font-family: monospace; width: 400px">
+        <input type="text" name="name" style="font-family: monospace; width: 400px" value="{{ name }}">
         <p>Comment:</p>
-        <textarea name="comment" style="font-family: monospace; width: 400px; height: 120px"></textarea>
+        <textarea name="comment" style="font-family: monospace; width: 400px; height: 120px">{{ entry }}</textarea>
         <div><input type="submit"></div>
     </form>
 

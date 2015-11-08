@@ -23,7 +23,7 @@ def frontpage(request):
 
 
 def blog(request):
-    recent_blog_posts = Blog.objects.order_by('-submitted')[:15]
+    recent_blog_posts = Blog.objects.order_by('-submitted')[:5]
     #### without templates:
     # output = ', '.join([p.slug for p in recent_blog_posts])  -> HttpResponse(output)
     context = RequestContext(request, {
@@ -60,7 +60,7 @@ class GuestbookView(generic.View):
     template_name = 'blog/guestbook.html'
 
     def get(self, request):
-        comments = GuestbookComment.objects.order_by('-submitted')[:100]
+        comments = GuestbookComment.objects.order_by('-submitted')[:30]
         context = RequestContext(request, {
             'comments': comments,
         })
@@ -74,7 +74,15 @@ class GuestbookView(generic.View):
             guestbook_comment.save()
             return HttpResponseRedirect(reverse('blog:guestbook'))
         else:
-            return HttpResponseRedirect(reverse('blog:guestbook'))
+            error = 'Try again with name and comment'
+            comments = GuestbookComment.objects.order_by('-submitted')[:30]
+            context = RequestContext(request, {
+                'comments': comments,
+                'error': error,
+                'name': name,
+                'entry': comment,
+            })
+            return render(request, self.template_name, context)
 
 
 class Archive(generic.ArchiveIndexView):
