@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^projects/$', views.projects, name="projects"),
     url(r'^development/$', views.development, name="development"),
     url(r'^me/$', views.MeView.as_view(), name="me"),
-    url(r'^guestbook/$', views.GuestbookView.as_view(), name='guestbook'),
+    url(r'^guestbook/$', views.guestbook, name='guestbook'),
 ]

@@ -7,8 +7,10 @@
         {% for comment in comments %}
         <table>
             <tr>
-                <td>{{ comment.name }}</td>
-                <td>{{ comment.submitted }}</td>
+                <td style="color: darkblue; font-size: 16px;">#{{ comment.id }}: {{ comment.name }}</td>
+            </tr>
+            <tr>
+                <td class="blogsubmit">{{ comment.submitted }}</td>
             </tr>
         </table>
         <div>{{ comment.comment }}</div>
@@ -18,14 +20,18 @@
         <p>I wonder who will be the first one to write something down here.</p>
     {% endif %}
 
-    <p class="error">{{ error }}</p>
     <form method="post">
-        {% csrf_token %}
-        <p>Name:</p>
-        <input type="text" name="name" style="font-family: monospace; width: 400px" value="{{ name }}">
-        <p>Comment:</p>
-        <textarea name="comment" style="font-family: monospace; width: 400px; height: 120px">{{ entry }}</textarea>
-        <div><input type="submit"></div>
+    {% csrf_token %}
+    {% if has_error %}
+    <p class="errorlist">Try again with name and comment</p>
+    {% endif %}
+    <p>Name:</p>
+    {{ form.name.errors }}
+    {{ form.name }}
+    <p>Comment:</p>
+    {{ form.comment.errors }}
+    {{ form.comment }}
+    <div><input type="submit"></div>
     </form>
 
 {% endblock %}

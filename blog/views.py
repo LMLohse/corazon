@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from django.views import generic
 
 from .models import Blog, GuestbookComment
+from .forms import GuestbookForm
 
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -56,33 +57,25 @@ class MeView(generic.TemplateView):
     #     return render(request, 'blog/me.html')
 
 
-class GuestbookView(generic.View):
-    template_name = 'blog/guestbook.html'
-
-    def get(self, request):
-        comments = GuestbookComment.objects.order_by('-submitted')[:30]
-        context = RequestContext(request, {
-            'comments': comments,
-        })
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-        name = request.POST.get('name')
-        comment = request.POST.get('comment')
-        if name and comment:
-            guestbook_comment = GuestbookComment(name=name, comment=comment)
+def guestbook(request):
+    has_submit_error = False
+    if request.method == 'POST':
+        form = GuestbookForm(request.POST)
+        if form.is_valid():
+            guestbook_comment = GuestbookComment(name=form.cleaned_data['name'], comment=form.cleaned_data['comment'])
             guestbook_comment.save()
             return HttpResponseRedirect(reverse('blog:guestbook'))
         else:
-            error = 'Try again with name and comment'
-            comments = GuestbookComment.objects.order_by('-submitted')[:30]
-            context = RequestContext(request, {
-                'comments': comments,
-                'error': error,
-                'name': name,
-                'entry': comment,
-            })
-            return render(request, self.template_name, context)
+            has_submit_error = True
+    else:
+        form = GuestbookForm()
+    comments = GuestbookComment.objects.order_by('-submitted')[:30]
+    context = RequestContext(request, {
+        'form': form,
+        'comments': comments,
+        'has_error': has_submit_error,
+    })
+    return render(request, 'blog/guestbook.html', context)
 
 
 class Archive(generic.ArchiveIndexView):
@@ -93,11 +86,3 @@ class Archive(generic.ArchiveIndexView):
     template_name = "blog/archive.html"
 
 
-
-### guestboll as definition
-# def guestbook(request):
-#     comments = GuestbookComment.objects.order_by('-submitted')[:100]
-#     context = RequestContext(request, {
-#         'comments': comments,
-#     })
-#     return render(request, 'blog/guestbook.html', context)
