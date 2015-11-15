@@ -15,6 +15,7 @@
                 <hr>
             {% endfor %}
             <a style="font-size: 18px" href="{% url 'blog:archive' %}">see all the posts</a>
+            <div style="text-align: right">{{ last_queried }}</div>
         {% else %}
             <p>Still no blog posts here :sadface</p>
         {% endif %}
