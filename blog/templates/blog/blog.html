@@ -4,17 +4,22 @@
     <div class="blog">
         {% if recent_blog_posts %}
             {% for post in recent_blog_posts %}
-                <div class="blogheader">
-                    <a href="{{ post.slug }}">{{ post.title }}</a>
-                </div>
-                <div class="blogsubmit">
-                    <p>by {{ post.author }}, {{ post.submitted }}</p>
-                </div>
+                <div class="blogcounter" title="{{ forloop.counter }}">
+                    <div class="blogheader">
+                        <a href="{{ post.slug }}">{{ post.title }}</a>
+                    </div>
+                    <div class="blogsubmit">
+                        <p>by {{ post.author }}, {{ post.submitted }}</p>
+                    </div>
 
-                <div>{{ post.entry|safe }}</div>
-                <hr>
+                    <div>{{ post.entry|safe }}</div>
+                    <hr>
+                </div>
             {% endfor %}
             <a style="font-size: 18px" href="{% url 'blog:archive' %}">see all the posts</a>
+            <br>
+            Feeds: <a href="{% url 'blog:rss' %}">RSS</a>
+            | <a href="{% url 'blog:atom' %}">Atom</a>
             <div style="text-align: right">{{ last_queried }}</div>
         {% else %}
             <p>Still no blog posts here :sadface</p>

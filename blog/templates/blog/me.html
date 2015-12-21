@@ -1,6 +1,93 @@
 {% extends 'blog/shell.html' %}
 {% block page %}
+    {% load staticfiles %}
+    <div>
+        <b>Lukas M. Lohse</b>
+        <p>Native German, currently settled in Munich. <a href="#">see german version</a>
+            <br>
+            Being a full graduated mechanical engineer with specialization into medical technology, automotive engineering
+            and cybernetics, I mainly participate in the Automotive Industry doing geometrical integration
+            of coolant and air conditioning for the next BMW X and 3 series.
+{#            alternative: I'm an engineer, web developer, writer, ...#}
+            <br>
+{#        Current process: turning myself into a hybrid. #}
+            I'm also into self improvement, challenging chronical pain and web development.
+            <br>
+            Self improvement -> building habits, gaining consciousness, being in the flow,
+            focus on what matters, settings goals consistently, time and priority mangement aka getting the right
+            things done as soon and efficient as possible.
+            <br>
+            2014 was about self improvement. 2015 is about health. 2016 will be about socializing.
+            <br>
+            I'm a bit of a gambler. I love football betting, bitcoins and stock(ing)s.
+            <br>
+            Currently I'm doing ---> link to projects.
+            first: created this webpage (link), yes this is not wordpress
+            second: the 95% plant based diet
+            third: learning on udacity
+            fourth: reading a lot of books (link to it)
+            fifth: blogging (link to blog)
+            <br>
+            I try to improve my spanish and french, but I can't speak french. Using anki (link to my account?),
+            coffee break spanish/french ..
+            <br>
+            mention: workouts, eatin healthy, student (always learning), character (introvert, ...), minimalist?,
+            from Halle, I love ... , I want to create value, <br>
+            Big fan of Onenote, Evernote, Wunderlist, anki, feedly, kindle, pocket, podcast addict,
+            <br>
+            I failed at poker, and a lot of other things, buts that's life.
+        </p>
+    </div>
+    <div>
+        CV - make it javascript popup
+        <br>
+        Work History:
+        TUM, Madrid, BMW (EA), PUZ
+        <br>
+        Software
+        <ul>
+            <li>Control engineering - Matlab, Simulink</li>
+            <li>Geometrical integration - Catia V5, Visual Basic</li>
+            <li>backend - Django, PostgreSQL</li>
+            <li>frontend - jQuery, bootstrap</li>
+            <li>programming - python2, (java)</li>
+            <li>rare occasions or obviously: dSpace Controldesk, Definiens Developer, Morphee,
+                CAMEO, Office, Html, CSS, C++ basics, Latex, Photoshop, javascript, CAD PDM, App engine
+            </li>
 
-tbd
+        </ul>
+    </div>
+
+
+{#    EMAIL-FORM#}
+{#    <div id="example" title="Email Me" class="hidden">#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{#            <p>Your Email:</p>#}
+{#            {{ form.sender_email }}#}
+{#            <p>Subject:</p>#}
+{#            {{ form.subject }}#}
+{#            <p>Text:</p>#}
+{#            {{ form.content }}#}
+{#            <div><input type="submit" value="Send now" title="Send me"></div>#}
+{#        </form>#}
+{#    </div>#}
+
+    <div>
+        Contact me
+{#        <button type="button" id="emailMe">Email Me</button>#}
+        <ul>
+            <li><a href="mailto:lukas.lohse22@gmail.com?Subject=Hi" target="_top">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/lukas-lohse-224b4190" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.xing.com/profile/Lukas_Lohse" target="_blank">Xing</a></li>
+            <li>
+                <img src="{% static 'blog/images/icons/social-22-github.png' %}" alt="github"/>
+                <a href="https://github.com/LMLohse/" target="_blank">GitHub</a>
+            </li>
+            <li><a href="https://www.facebook.com/lukas.lohse.1" target="_blank">Facebook</a></li>
+            <li><a href="#" target="_blank">Twitter</a></li>
+        </ul>
+    </div>
+    <div>Print</div>
 
 {% endblock %}

@@ -1,6 +1,29 @@
 {% extends 'blog/shell.html' %}
 {% block page %}
 
-tbd
+    <div id="asTable">
+        <table>
+            <tr>
+                <td><a href="#">Book reviews</a></td>
+                <td><a href="#">Self-Improvement</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Learn to Code</a></td>
+                <td><a href="#">Health & Tech</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="asList" class="hidden">
+        <ul>
+            <li><a href="#">Book reviews</a></li>
+            <li><a href="#">Self-Improvement</a></li>
+            <li><a href="#">Learn to Code</a></li>
+            <li><a href="#">Health & Tech</a></li>
+        </ul>
+    </div>
+
+    <div><a id="toggletoggle" href="#">Toggle toggle</a></div>
+
 
 {% endblock %}

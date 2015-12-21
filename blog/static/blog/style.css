@@ -35,6 +35,14 @@ body {
     overflow-y: scroll
 }
 
+/* Disable jQuery UI focus glow */
+*:focus {
+    outline: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 .hidden {
     display: none;
 }

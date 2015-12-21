@@ -1,24 +1,20 @@
-import time
+import time, datetime
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.core.mail import send_mail, BadHeaderError
 from django.template import RequestContext, loader
 from django.views import generic
+from django.contrib.syndication.views import Feed
+from django.utils.feedgenerator import Atom1Feed
 
 from .models import Blog, GuestbookComment
-from .forms import GuestbookForm
+from .forms import GuestbookForm, EmailForm
 from .functions import caching_functions
 
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
-# /         - Homepage (static links for now)
-# /blog     - 10 most recent blog posts
-#   /blog/slug      - Permalinks
-# /projects - static list page
-# /vita     - static list page
-# /contact  - static links page
-# /progress - static list page
 
 
 def frontpage(request):
@@ -38,6 +34,37 @@ def blog(request):
     return render(request, 'blog/blog.html', context)
 
 
+class BlogRSSFeed(Feed):
+    title = 'LMLohse latest posts'
+    link = '/blog/'
+    description = 'You are the best ever.'
+
+    def items(self):
+        return caching_functions.blog_cache()[:12]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.entry
+
+    # item_link is only needed if NewsItem has no get_absolute_url method.
+    def item_link(self, item):
+        return reverse('blog:slug', args=[item.slug])
+
+    def item_pubdate(self, item):
+        return item.submitted
+
+
+class BlogAtem1Feed(BlogRSSFeed):
+    feed_type = Atom1Feed
+    subtitle = BlogRSSFeed.description
+    author_name = 'Lukas M. Lohse'
+
+    def item_updateddate(self, item):
+        return item.modified
+
+
 def projects(request):
     return render(request, 'blog/projects.html')
 
@@ -55,11 +82,35 @@ class SlugView(generic.DetailView):
     #     return render(request, 'blog/slug.html', {'blog_post': blog_post})
 
 
+# EMAIL-VERSION
+# def me(request):
+#     has_submit_error = False
+#     if request.method == "POST":
+#         form = EmailForm(request.POST)
+#         if form.is_valid():
+#             subject = form.cleaned_data['subject']
+#             message = form.cleaned_data['content']
+#             sender = form.cleaned_data['sender_email']
+#             receiver = 'lukas.lohse22@gmail.com'
+#             try:
+#                 send_mail(subject, message, sender, [receiver], fail_silently=False)
+#             except BadHeaderError:
+#                 return HttpResponse('Invalid header')
+#             return HttpResponseRedirect('/')
+#         else:
+#             return HttpResponseRedirect('/blog')
+#             #has_submit_error = True
+#             # do an ajax ??
+#     else:
+#         form = EmailForm()
+#     context = RequestContext(request, {
+#         'form': form,
+#         'has_error': has_submit_error,
+#     })
+#     return render(request, 'blog/me.html', context)
+
 class MeView(generic.TemplateView):
     template_name = 'blog/me.html'
-    # this is equal to:
-    # def me(request):
-    #     return render(request, 'blog/me.html')
 
 
 def guestbook(request):

@@ -3,13 +3,16 @@
 <head>
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'blog/dev_libs/jquery-ui-1.11.4.css' %}">
+    <script src="{% static 'blog/dev_libs/jquery-1.11.3.js' %}"></script>
+    <script src="{% static 'blog/dev_libs/jquery-ui-1.11.4.js' %}"></script>
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Content-Language" content="en-us" />
     <meta name="LMLohse" content="LMLohse" />
     <title>lmlohse</title>
 </head>
 <body>
-
+<script src="{% static 'blog/js/blog_functions.js' %}"></script>
 <div id="page-shell">
     <div id="nav-shell">
         <div id="nav-bar">
